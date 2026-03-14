@@ -8,9 +8,9 @@ const Root = () => {
         <div className='min-h-screen flex flex-col'>
             <NavBar></NavBar>
 
-            <div className='grow'>
+            <main className='flex-1 bg-[#f1f1f1]'>
                 <Outlet></Outlet>
-            </div>
+            </main>
 
             <Footer></Footer>
         </div>

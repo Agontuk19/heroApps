@@ -6,6 +6,7 @@ import { MdReviews } from "react-icons/md";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import WrongApp from '../WrongApp/WrongApp';
 import { addToInstallDB, getInstallApp } from '../../utility/addToDB';
+import Swal from 'sweetalert2'
 
 const AppDetails = () => {
     const { id } = useParams();
@@ -18,11 +19,16 @@ const AppDetails = () => {
     }
     const { image, title, companyName, description, size, reviews, ratingAvg, downloads, ratings } = app;
 
-    
+
     const handleInstall = (id) => {
         if (!install) {
             setInstall(true);
             addToInstallDB(id);
+            Swal.fire({
+                title: "App Installed Succesfully!",
+                icon: "success",
+                draggable: true
+            });
         }
     }
     return (
@@ -52,7 +58,7 @@ const AppDetails = () => {
                             <p className='text-4xl font-semibold'>{reviews / 1000}K</p>
                         </div>
                     </div>
-                    <button 
+                    <button
                         onClick={() => handleInstall(id)}
                         className={`px-3 py-2 rounded-md mt-2 font-semibold ${install === true ? 'disabled border-2 border-[#00D390] text-black' : "bg-[#00D390] text-white"}`}>
                         {
@@ -69,7 +75,7 @@ const AppDetails = () => {
                         <XAxis type='number' />
                         <YAxis type='category' dataKey='name' width={50} />
                         <Tooltip />
-                        <Bar dataKey='count' fill='#FF8811'/>
+                        <Bar dataKey='count' fill='#FF8811' />
                     </BarChart>
                 </ResponsiveContainer>
             </div>

@@ -21,7 +21,7 @@ const TrendingApps = () => {
                     }
                 </div>
             </Suspense>
-            <Link to={'/allApps'}>
+            <Link to={'/allApps'} onClick={() => window.scrollTo(0,0)}>
                 <button className='bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white inter px-3 py-2 rounded-md mt-2'>
                     Show All
                 </button>

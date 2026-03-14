@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-import { getInstallApp, uninstallFromDB } from '../../utility/addToDB';
+import { getInstallApp } from '../../utility/addToDB';
 import InstallApp from '../../components/InstallApp/InstallApp';
 
 
@@ -18,13 +18,13 @@ const InstallApps = () => {
 
     const handleSort = (type) => {
         setSort(type);
-        if (type === 'Rating') {
-            const sortedByRating = [...installApps.sort((a, b) => a.ratingAvg - b.ratingAvg)]
-            setInstallApps(sortedByRating);
+        if (type === 'High-Low') {
+            const sortedByHighLow = [...installApps.sort((a, b) => b.downloads - a.downloads)]
+            setInstallApps(sortedByHighLow);
         }
-        else if (type === 'Size') {
-            const sortedBySize = [...installApps.sort((a, b) => a.size - b.size)]
-            setInstallApps(sortedBySize);
+        else if (type === 'Low-High') {
+            const sortedBYLowHigh = [...installApps.sort((a, b) => a.downloads - b.downloads)]
+            setInstallApps(sortedBYLowHigh);
         }
     }
 
@@ -42,8 +42,8 @@ const InstallApps = () => {
                         ? <div className="dropdown dropdown-left text-gray-600">
                             <div tabindex="0" role="button" class="btn px-3 py-0 rounded-md border-gray-500">{sort ? `Sorted By (${sort})` : "Sort By"}</div>
                             <ul tabindex="-1" class="dropdown-content menu bg-white rounded-md z-1 w-52 p-2 shadow-sm">
-                                <li><a onClick={() => handleSort('Rating')}>Rating</a></li>
-                                <li><a onClick={() => handleSort('Size')}>Size</a></li>
+                                <li><a onClick={() => handleSort('High-Low')}>High-Low</a></li>
+                                <li><a onClick={() => handleSort('Low-High')}>Low-High</a></li>
                             </ul>
                         </div>
                         : ""

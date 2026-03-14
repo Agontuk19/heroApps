@@ -2,6 +2,7 @@ import React from 'react';
 import googlePlay from '/googlePlay.png';
 import appStore from '/appStore.png';
 import bannerPhoto from '/hero.png'
+import { Link } from 'react-router';
 
 const Banner = () => {
     return (
@@ -11,14 +12,14 @@ const Banner = () => {
                 <p className='py-2 mx-5 md:mx-25'>At HERO.IO , we craft innovative apps designed to make everyday life simpler, smarter, and more exciting.Our goal is to turn your ideas into digital experiences that truly make an impact.</p>
             </div>
             <div className='flex gap-5 py-3 inter'>
-                <button className='border border-gray-300 px-3 py-2 rounded-md flex gap-1.5 items-center hover:bg-linear-to-br from-[#632EE3] to-[#9F62F2] hover:text-white'>
+                <Link to={'https://play.google.com/store/apps?hl=en'} className='border border-gray-300 px-3 py-2 rounded-md flex gap-1.5 items-center hover:bg-linear-to-br from-[#632EE3] to-[#9F62F2] hover:text-white'>
                     <img src={googlePlay} alt="" className='h-4'/>
                     <p>Google Play</p>
-                </button>
-                <button className='border border-gray-300 px-3 py-2 rounded-md flex gap-1.5 items-center hover:bg-linear-to-br from-[#632EE3] to-[#9F62F2] hover:text-white'>
+                </Link>
+                <Link to={'https://www.apple.com/app-store/'} className='border border-gray-300 px-3 py-2 rounded-md flex gap-1.5 items-center hover:bg-linear-to-br from-[#632EE3] to-[#9F62F2] hover:text-white'>
                     <img src={appStore} alt="" className='h-5'/>
                     <p>App Store</p>
-                </button>
+                </Link>
             </div>
             <div>
                 <img src={bannerPhoto} alt="" className='h-50 md:h-80 pt-4'/>

@@ -2,12 +2,18 @@ import React from 'react';
 import { IoMdDownload } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import { uninstallFromDB } from '../../utility/addToDB';
+import Swal from 'sweetalert2'
 
 const InstallApp = ({ app, installApps, setInstallApps }) => {
     const handleUninstall = (id) => {
         const newInstall = installApps.filter(app => app.id != id);
         setInstallApps(newInstall);
         uninstallFromDB(id);
+        Swal.fire({
+            title: "App Uninstalled Succesfully!",
+            icon: "success",
+            draggable: true
+        });
     }
     return (
         <div className='bg-white rounded-md mt-1.5 px-2 py-1 flex justify-between items-center gap-3'>

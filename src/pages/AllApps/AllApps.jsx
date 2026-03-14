@@ -2,18 +2,24 @@ import React, { Suspense, use, useState } from 'react';
 import App from '../../components/App/App';
 import { FaSearch } from "react-icons/fa";
 
+
 const appsPromise = fetch('/apps.json')
     .then(res => res.json())
 
 const AllApps = () => {
     const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(false);
     const allApps = use(appsPromise);
     const searchedApps = allApps.filter(app =>
         app.title.toLowerCase().includes(search.toLowerCase())
     );
     const searchField = (e) => {
         const searchedString = e.target.value;
-        setSearch(searchedString);
+        setLoading(true);
+        setTimeout(() => {
+            setSearch(searchedString);
+            setLoading(false);
+        }, 0);
     }
 
     return (
@@ -32,17 +38,21 @@ const AllApps = () => {
             </div>
             <Suspense>
                 {
-                    searchedApps.length > 0
-                        ? <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pb-8 pt-4 items-stretch'>
-                            {
-                                searchedApps.map(app => {
-                                    return <App key={app.id} app={app}></App>
-                                })
-                            }
+                    loading ?
+                        <div className='flex justify-center items-center'>
+                            <span class="loading loading-infinity loading-xl"></span>
                         </div>
-                        : <div className='flex justify-center items-center'>
-                            <h1 className='text-center text-gray-500 text-2xl md:text-6xl lg:text-8xl xl:text-9xl py-20 md:py-15 lg:py-20 xl:py-30'>No Apps Found!</h1>
-                        </div>
+                        : searchedApps.length > 0
+                            ? <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pb-8 pt-4 items-stretch'>
+                                {
+                                    searchedApps.map(app => {
+                                        return <App key={app.id} app={app}></App>
+                                    })
+                                }
+                            </div>
+                            : <div className='flex justify-center items-center'>
+                                <h1 className='text-center text-gray-500 text-2xl md:text-6xl lg:text-8xl xl:text-9xl py-20 md:py-15 lg:py-20 xl:py-30'>No App Found!</h1>
+                            </div>
                 }
 
             </Suspense>

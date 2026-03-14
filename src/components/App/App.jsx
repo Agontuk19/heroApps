@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const App = ({ app }) => {
     return (
-        <Link to={`/appDetails/${app.id}`} className='h-full'>
+        <Link to={`/appDetails/${app.id}`} className='h-full' onClick={() => window.scrollTo(0,0)}>
             <div className='bg-white rounded-md p-3 h-full'>
                 <img src={app.image} alt="" className='h-35 md:h-60 w-full rounded-md' />
                 <p className='pt-2 text-lg'>{app.title}</p>

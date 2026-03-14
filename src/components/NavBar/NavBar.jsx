@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { FaGithub } from "react-icons/fa";
 import appLogo from '/logo.png';
 
 const links = <>
-    <NavLink className={({isActive}) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]": ""} to={'/'}> Home</NavLink>
-    <NavLink className={({isActive}) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]": ""} to={'/allApps'}>Apps</NavLink>
-    <NavLink className={({isActive}) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]": ""} to={'/installApps'}>Installation</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]" : ""} to={'/'}> Home</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]" : ""} to={'/allApps'}>Apps</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]" : ""} to={'/installApps'}>Installation</NavLink>
 </>
 
 const NavBar = () => {
@@ -23,8 +23,10 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <img src={appLogo} alt="" className='h-9 mr-1' />
-                <p className='font-bold text-xl inter bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]'>HERO.IO</p>
+                <Link to={'/'} className='flex items-center'>
+                    <img src={appLogo} alt="" className='h-9 mr-1' />
+                    <p className='font-bold text-xl inter bg-linear-to-br bg-clip-text text-transparent from-[#632EE3] to-[#9F62F2]'>HERO.IO</p>
+                </Link>
             </div>
             <div className='gap-4 inter hidden md:flex'>
                 {links}

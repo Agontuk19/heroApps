@@ -19,3 +19,10 @@ export const addToInstallDB = (id) => {
         localStorage.setItem('appList', data);
     }
 }
+export const uninstallFromDB = (id) => {
+    const storedApp = getInstallApp();
+    const storedAppUpdate = storedApp.filter(appId => appId !== String(id));
+    const data = JSON.stringify(storedAppUpdate);
+    localStorage.setItem('appList', data);
+    console.log('After removal:', getInstallApp());
+}

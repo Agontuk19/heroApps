@@ -10,10 +10,10 @@ const InstallApp = ({ app, installApps, setInstallApps }) => {
         uninstallFromDB(id);
     }
     return (
-        <div className='bg-white rounded-md mt-1.5 px-2 py-1 flex justify-between items-center'>
+        <div className='bg-white rounded-md mt-1.5 px-2 py-1 flex justify-between items-center gap-3'>
             <div className='flex gap-2 items-center'>
                 <div>
-                    <img src={app.image} alt="" className='h-10 rounded-md' />
+                    <img src={app.image} alt="" className='h-10 w-10 rounded-md' />
                 </div>
                 <div>
                     <p className='text-[1rem]'>{app.title}</p>
